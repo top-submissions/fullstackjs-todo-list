@@ -19,5 +19,10 @@
   "bugs": {
     "url": "https://github.com/top-submissions/fullstackjs-todo-list/issues"
   },
-  "homepage": "https://github.com/top-submissions/fullstackjs-todo-list#readme"
+  "homepage": "https://github.com/top-submissions/fullstackjs-todo-list#readme",
+  "devDependencies": {
+    "webpack": "^5.104.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
+  }
 }
