@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List App</title>
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <h1>Projects</h1>
+        <div class="projects-list" id="projectsList"></div>
+        <button id="addProjectBtn" class="btn btn-primary">
+          + New Project
+        </button>
+      </aside>
+
+      <main class="main-content">
+        <div class="todo-header">
+          <h2 id="currentProjectTitle">Default Project</h2>
+          <button id="addTodoBtn" class="btn btn-primary">+ Add Todo</button>
+        </div>
+        <div class="todos-list" id="todosList"></div>
+      </main>
+    </div>
+
+    <!-- Modal for adding/editing todos -->
+    <div id="todoModal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3 id="modalTitle">Add New Todo</h3>
+        <form id="todoForm">
+          <input type="text" id="todoTitle" placeholder="Title" required />
+          <textarea
+            id="todoDescription"
+            placeholder="Description"
+            rows="3"
+          ></textarea>
+          <input type="date" id="todoDueDate" required />
+          <select id="todoPriority">
+            <option value="low">Low Priority</option>
+            <option value="medium">Medium Priority</option>
+            <option value="high">High Priority</option>
+          </select>
+          <textarea
+            id="todoNotes"
+            placeholder="Notes (optional)"
+            rows="2"
+          ></textarea>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" id="cancelBtn" class="btn btn-secondary">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal for adding projects -->
+    <div id="projectModal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>New Project</h3>
+        <form id="projectForm">
+          <input
+            type="text"
+            id="projectName"
+            placeholder="Project Name"
+            required
+          />
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Create</button>
+            <button
+              type="button"
+              id="cancelProjectBtn"
+              class="btn btn-secondary"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
