@@ -1,0 +1,24 @@
+{
+  "name": "fullstackjs-todo-list",
+  "version": "1.0.0",
+  "description": "A streamlined template repository for individual web development projects with essential documentation and clean project structure.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/top-submissions/fullstackjs-todo-list.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/top-submissions/fullstackjs-todo-list/issues"
+  },
+  "homepage": "https://github.com/top-submissions/fullstackjs-todo-list#readme"
+}
