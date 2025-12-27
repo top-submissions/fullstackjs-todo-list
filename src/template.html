@@ -3,83 +3,157 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo List App</title>
+    <title>TaskFlow - Modern Todo Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="container">
-      <aside class="sidebar">
-        <h1>Projects</h1>
-        <div class="projects-list" id="projectsList"></div>
-        <button id="addProjectBtn" class="btn btn-primary">
-          + New Project
-        </button>
-      </aside>
+    <div class="app-wrapper">
+      <div class="container">
+        <aside class="sidebar">
+          <div class="sidebar-header">
+            <div class="logo">
+              <div class="logo-icon">✓</div>
+              <h1>TaskFlow</h1>
+            </div>
+            <p class="tagline">Organize your life</p>
+          </div>
 
-      <main class="main-content">
-        <div class="todo-header">
-          <h2 id="currentProjectTitle">Default Project</h2>
-          <button id="addTodoBtn" class="btn btn-primary">+ Add Todo</button>
-        </div>
-        <div class="todos-list" id="todosList"></div>
-      </main>
+          <div class="projects-section">
+            <div class="section-label">Your Projects</div>
+            <div class="projects-list" id="projectsList"></div>
+            <button id="addProjectBtn" class="btn btn-primary btn-add-project">
+              <span class="btn-icon">+</span>
+              New Project
+            </button>
+          </div>
+        </aside>
+
+        <main class="main-content">
+          <div class="content-wrapper">
+            <div class="todo-header">
+              <div class="header-left">
+                <h2 id="currentProjectTitle">Default Project</h2>
+                <div class="header-subtitle">Stay organized and productive</div>
+              </div>
+              <button id="addTodoBtn" class="btn btn-primary btn-floating">
+                <span class="btn-icon">+</span>
+                Add Task
+              </button>
+            </div>
+            <div class="todos-list" id="todosList"></div>
+          </div>
+        </main>
+      </div>
     </div>
 
     <!-- Modal for adding/editing todos -->
     <div id="todoModal" class="modal hidden">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h3 id="modalTitle">Add New Todo</h3>
-        <form id="todoForm">
-          <input type="text" id="todoTitle" placeholder="Title" required />
-          <textarea
-            id="todoDescription"
-            placeholder="Description"
-            rows="3"
-          ></textarea>
-          <input type="date" id="todoDueDate" required />
-          <select id="todoPriority">
-            <option value="low">Low Priority</option>
-            <option value="medium">Medium Priority</option>
-            <option value="high">High Priority</option>
-          </select>
-          <textarea
-            id="todoNotes"
-            placeholder="Notes (optional)"
-            rows="2"
-          ></textarea>
-          <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Save</button>
-            <button type="button" id="cancelBtn" class="btn btn-secondary">
-              Cancel
-            </button>
+      <div class="modal-backdrop"></div>
+      <div class="modal-container">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 id="modalTitle">Add New Task</h3>
+            <span class="close">&times;</span>
           </div>
-        </form>
+          <form id="todoForm">
+            <div class="form-group">
+              <label for="todoTitle">Task Title</label>
+              <input
+                type="text"
+                id="todoTitle"
+                placeholder="What needs to be done?"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="todoDescription">Description</label>
+              <textarea
+                id="todoDescription"
+                placeholder="Add more details..."
+                rows="3"
+              ></textarea>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="todoDueDate">Due Date</label>
+                <input type="date" id="todoDueDate" required />
+              </div>
+
+              <div class="form-group">
+                <label for="todoPriority">Priority</label>
+                <select id="todoPriority">
+                  <option value="low">🟢 Low</option>
+                  <option value="medium">🟡 Medium</option>
+                  <option value="high">🔴 High</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="todoNotes">Additional Notes</label>
+              <textarea
+                id="todoNotes"
+                placeholder="Optional notes..."
+                rows="2"
+              ></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" id="cancelBtn" class="btn btn-secondary">
+                Cancel
+              </button>
+              <button type="submit" class="btn btn-primary">
+                <span class="btn-icon">✓</span>
+                Save Task
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
 
     <!-- Modal for adding projects -->
     <div id="projectModal" class="modal hidden">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h3>New Project</h3>
-        <form id="projectForm">
-          <input
-            type="text"
-            id="projectName"
-            placeholder="Project Name"
-            required
-          />
-          <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Create</button>
-            <button
-              type="button"
-              id="cancelProjectBtn"
-              class="btn btn-secondary"
-            >
-              Cancel
-            </button>
+      <div class="modal-backdrop"></div>
+      <div class="modal-container">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>New Project</h3>
+            <span class="close">&times;</span>
           </div>
-        </form>
+          <form id="projectForm">
+            <div class="form-group">
+              <label for="projectName">Project Name</label>
+              <input
+                type="text"
+                id="projectName"
+                placeholder="Enter project name..."
+                required
+              />
+            </div>
+
+            <div class="form-actions">
+              <button
+                type="button"
+                id="cancelProjectBtn"
+                class="btn btn-secondary"
+              >
+                Cancel
+              </button>
+              <button type="submit" class="btn btn-primary">
+                <span class="btn-icon">+</span>
+                Create Project
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </body>
