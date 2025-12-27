@@ -1,6 +1,6 @@
 // Factory function for creating Projects
 export function createProject(name) {
-  const id = Date.now().toString() + Math.random().toString(36).substr(2, 9);
+  const id = crypto.randomUUID();
   const todos = [];
 
   return {
